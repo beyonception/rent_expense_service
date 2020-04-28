@@ -1,0 +1,11 @@
+Run the following command:
+
+npm install
+
+After that go to .env file and change the URL(replace : localhost:7000/ localhost:5000) as per deploying AuthService and User Service 
+
+AUTH_SERVICE_URL = http://localhost:7000/api/authService
+USER_SERVICE_URL = http://localhost:5000/api/userService
+
+Run the command to start the Server
+npm start
