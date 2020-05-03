@@ -8,14 +8,16 @@ const getExpenses = async () => {
 };
 
 const getDashboardBasedOnMonth = async (month, year) => {
-  var startDate = new Date(year, (month-1), 1);
+  var startDate = new Date(year, month - 1, 1);
   var endDate = new Date(year, month, 0);
-  const getexpenses = await Expense.find({
-    createdDate: {
-      $gte: new Date(startDate.setHours(00, 00, 00)),
-      $lt: new Date(endDate.setHours(23, 59, 59)),
-    },
-  });
+  const getexpenses = await Expense.find( {$or:
+    [{
+      createdDate: {
+        $gte: new Date(startDate.setHours(00, 00, 00)),
+        $lt: new Date(endDate.setHours(23, 59, 59)),
+      },
+    }, { defaultExpense: true }]}
+  );
   return getexpenses;
 };
 
